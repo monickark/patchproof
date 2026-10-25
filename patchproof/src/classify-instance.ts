@@ -79,6 +79,8 @@ export function classifyInstance(
   // so JavaScript never tries to read report.release or report.checkedAtMs.
   // TypeScript types help callers during development; these checks cover the
   // missing/invalid values listed here, not arbitrary unvalidated network JSON.
+  // Match the dashboard contract: whole, nonnegative Unix milliseconds within
+  // the JavaScript Date range. Invalid source time can never prove a match.
   if (
     !approvedRelease.trim() ||
     !report ||
@@ -86,7 +88,9 @@ export function classifyInstance(
     !Number.isFinite(nowMs) ||
     !Number.isFinite(maxAgeMs) ||
     maxAgeMs < 0 ||
-    !Number.isFinite(report.checkedAtMs)
+    !Number.isSafeInteger(report.checkedAtMs) ||
+    report.checkedAtMs < 0 ||
+    report.checkedAtMs > 8640000000000000
   ) {
     return 'Unknown';
   }

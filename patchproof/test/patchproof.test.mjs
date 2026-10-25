@@ -66,3 +66,11 @@ test('CLI JSON preserves totals and exits unconfirmed for an empty inventory', a
     assert.equal(output.notification, 'Attention required');
   } finally { rmSync(directory, { recursive: true }); }
 });
+
+// Invalid source timestamps must not become matches even with a generous age limit.
+test('fractional, negative, unsafe, and out-of-range source timestamps are Unknown', () => {
+  for (const checkedAtMs of [999.5, -1, NaN, Infinity, Number.MAX_SAFE_INTEGER + 1, 8640000000000001]) {
+    assert.equal(classifyInstance('v1.4.0', {release:'v1.4.0', checkedAtMs}, 1000, Number.MAX_SAFE_INTEGER), 'Unknown');
+  }
+  assert.equal(classifyInstance('v1.4.0', {release:'v1.4.0', checkedAtMs:0}, 1000, 2000), 'Match');
+});
