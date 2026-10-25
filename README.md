@@ -1,5 +1,7 @@
 # PatchProof
 
+[Live demo](https://patchproof-release-monitor.granddill64.chatgpt.site/) · [Source on GitHub](https://github.com/monickark/patchproof)
+
 Verify that every expected application instance reports the team-approved release using fresh evidence. A different release—even a newer one—is a mismatch. Missing, failed, invalid, or stale evidence is Unknown and never counts as success.
 
 A small portfolio project built with Node.js and plain HTML, CSS, and JavaScript. The hosted experience is simulated; notifications are in-app only. Matching a reported release does not prove security, application health, or an independently verified image digest.
