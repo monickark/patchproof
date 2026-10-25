@@ -1,0 +1,33 @@
+# Dependencies and local caches
+node_modules/
+.npm/
+.cache/
+
+# Secrets and local environment files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local monitoring configuration (keep the documented example)
+config.local.json
+config.*.local.json
+
+# CLI build output. The dashboard dist/ contains SOURCE and must stay tracked.
+/patchproof/dist/
+
+# Hosting metadata belongs to the existing Sites checkout
+.openai/
+
+# Test output and logs
+coverage/
+.nyc_output/
+*.log
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

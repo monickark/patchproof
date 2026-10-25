@@ -1,0 +1,10 @@
+{
+  "approvedRelease": "v1.4.0",
+  "maxAgeMs": 30000,
+  "timeoutMs": 3000,
+  "intervalMs": 10000,
+  "instances": [
+    { "id": "app-1", "url": "http://127.0.0.1:4101/release" },
+    { "id": "app-2", "url": "http://127.0.0.1:4102/release" }
+  ]
+}
